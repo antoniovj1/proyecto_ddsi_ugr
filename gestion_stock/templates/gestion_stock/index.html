@@ -1,0 +1,112 @@
+{% extends "gestion_stock/base.html" %}
+{% load bootstrap3 %}
+{% block title %} Stock {% endblock %}
+
+{% block content %}
+<form action="/stock/nuevo">
+  <button type="submit" class="btn btn-success "><span class="glyphicon glyphicon-plus"> Nuevo</button>
+  </form>
+  <p></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <form action="/stock/buscar" class="search-form">
+          <div class="form-group has-feedback">
+            <label for="search" class="sr-only">Buscar...</label>
+            <input type="text" class="form-control" name="search" id="search" placeholder="search">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% if mensaje %}
+  <div class="alert alert-danger">
+    {{ mensaje }}
+  </div>
+  {% endif %}
+
+  {% if mensaje_stock %}
+  <div class="alert alert-danger">
+    {{ mensaje_stock }}
+  </div>
+  {% endif %}
+  {% if productos %}
+  <table class="table table-striped table-bordered table-condensed table-responsive">
+    <thead>
+      <tr>
+        <th></th>
+        <th colspan="1">Código</th>
+        <th colspan="1">Cantidad</th>
+        <th colspan="1">Nombre</th>
+        <th colspan="1">Marca</th>
+        <th colspan="1">Modelo</th>
+        <th>Acciones</th>
+        <th>Reponer/Gastar</th>
+      </tr>
+    </thead>
+
+    <tbody
+    {% for producto in productos %}
+    <tr>
+      <td> {{ producto.id}} </td>
+      <td> {{ producto.codigo}} </td>
+      <td> {{ producto.cantidad}} </td>
+      <td> {{ producto.nombre}} </td>
+      <td> {{ producto.marca}} </td>
+      <td> {{ producto.modelo}} </td>
+
+      <td>
+        <div class="btn-group">
+          <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"> Opciones <span class="caret glyphicon glyphicon-wrench"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="/stock/detalles/{{producto.id}}">Detalles</a></li>
+            <li><a href="/stock/modificar/{{producto.id}}">Modificar</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalDelete">Eliminar</a></li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <form action="/stock/ajustar" class="">
+          <input type="number" class="form-control" name="cantidad" id="contar" placeholder="cantidad...">
+          <input type="hidden" class="form-control" name="id" id="id" value="{{producto.id}}">
+        </form>
+      </td>
+
+      <!-- Modal -->
+      <div id="modalDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title">Eliminar</h3>
+            </div>
+            <div class="modal-body">
+              <h3>¿ Está seguro de que desea eliminar el producto ?</h3>
+            </div>
+            <div class="modal-footer">
+              <form action="/stock/eliminar/{{producto.id}}">
+                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"> Eliminar </button>
+                </form>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <br />
+</div>
+
+{% else %}
+<h2> No se encuentran productos </h2>
+{% endif %}
+
+{% endblock %}
