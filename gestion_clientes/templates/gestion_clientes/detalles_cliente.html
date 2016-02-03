@@ -1,0 +1,82 @@
+{% extends "gestion_clientes/base.html" %}
+{% load bootstrap3 %}
+{% block title %} Detalles Cliente {% endblock %}
+{% load staticfiles %}
+{% block content %}
+<h1>Detalles Cliente</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ cliente.nombre}} {{cliente.apellidos }}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            {% if cliente.foto %}
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ cliente.foto.url }}" class="img-circle img-responsive"> </div>
+            {% else %}
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{% static "gestion_clientes/images/cliente.png" %}" class="img-circle img-responsive"> </div>
+            {% endif %}
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>Nombre:</td>
+                    <td>{{ cliente.nombre}}</td>
+                  </tr>
+                  <tr>
+                    <td>Apellidos:</td>
+                    <td>{{cliente.apellidos }}</td>
+                  </tr>
+                  <tr>
+                    <td>Fecha de naciemiento:</td>
+                    <td>{{ cliente.f_nacimiento }} </td>
+                  </tr>
+                  <tr>
+                    <td>Sexo:</td>
+                    <td>{{ cliente.sexo }} </td>
+                  </tr>
+                  <tr>
+                    <td>Telefono:</td>
+                    <td>{{ cliente.telefono }} </td>
+                  </tr>
+                  <tr>
+                    <td>DNI:</td>
+                    <td>{{ cliente.dni }} </td>
+                  </tr>
+                  <tr>
+                    <td>Dirección:</td>
+                    <td>{{ cliente.direccion}} </td>
+                  </tr>
+                  <tr>
+                    <td>Localidad:</td>
+                    <td>{{ cliente.localidad }} </td>
+                  </tr>
+                  <tr>
+                    <td>Código postal:</td>
+                    <td>{{ cliente.cod_postal }} </td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <a href="#" class="btn btn-primary">Informacón optométrica</a>
+          <a href="/clientes" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left">Atras</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
