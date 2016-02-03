@@ -1,0 +1,22 @@
+{% extends "gestion_personal/base.html" %}
+
+{% load bootstrap3 %}
+{% block title %} Alta Empleado {% endblock %}
+
+{% block content %}
+<h1>Alta Empleado</h1>
+{# Display a form #}
+<form method="post" class="form" enctype="multipart/form-data">
+  {% csrf_token%}
+  {% bootstrap_form user_form %}
+  {% bootstrap_form personal_form %}
+
+  {% buttons %}
+  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"> Dar de alta </button>
+  </form>
+  <form action="/personal">
+    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"> Atras</button>
+    </form>
+    {% endbuttons %}
+
+    {% endblock %}
