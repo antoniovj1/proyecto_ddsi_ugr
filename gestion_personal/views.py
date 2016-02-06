@@ -75,6 +75,8 @@ def modificarPersonal(request, id):
             if form.is_valid():
                 form = form.cleaned_data
 
+                if(form['foto']):
+                    personal.foto = form['foto']
                 if(form['nombre']):
                     personal.nombre = form['nombre']
                 if(form['apellidos']):
@@ -90,7 +92,7 @@ def modificarPersonal(request, id):
                 if(form['direccion']):
                     personal.direccion = form['direccion']
                 if(form['sexo']):
-                    personal.sexo = form['sexo']   
+                    personal.sexo = form['sexo']
 
                 personal.save()
 

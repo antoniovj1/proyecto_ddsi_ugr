@@ -18,7 +18,7 @@ class UserForm(ModelForm):
 class AltaPersonalForm(ModelForm):
     class Meta:
         model = Personal
-        fields = ['foto','nombre','apellidos','dni','f_nacimiento','sexo',
+        fields = ['nombre','apellidos','dni','f_nacimiento','sexo',
                   'direccion','localidad', 'cod_postal', 'telefono','num_seg_social']
 
         dateOptions = {

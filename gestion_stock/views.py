@@ -35,6 +35,8 @@ def modificarProducto(request, id):
             if form.is_valid():
                 form = form.cleaned_data
 
+                if(form['foto']):
+                    producto.foto = form['foto']
                 if(form['nombre']):
                     producto.nombre = form['nombre']
                 if(form['codigo']):

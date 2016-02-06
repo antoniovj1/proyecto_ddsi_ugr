@@ -46,13 +46,13 @@
           <ul class="dropdown-menu">
             <li><a href="/clientes/detalles/{{cliente.id}}">Detalles</a></li>
             <li><a href="/clientes/modificar/{{cliente.id}}">Modificar</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalDelete">Eliminar</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalDelete{{cliente.id}}">Eliminar</a></li>
           </ul>
         </div>
       </td>
 
       <!-- Modal -->
-      <div id="modalDelete" class="modal fade" role="dialog">
+      <div id="modalDelete{{cliente.id}}" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
           <!-- Modal content-->

@@ -66,6 +66,8 @@ def modificarProveedor(request, id):
             if form.is_valid():
                 form = form.cleaned_data
 
+                if(form['foto']):
+                    proveedor.foto = form['foto']
                 if(form['nombre']):
                     proveedor.nombre = form['nombre']
                 if(form['email']):

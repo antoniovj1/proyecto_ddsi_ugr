@@ -19,10 +19,10 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            {% if cliente.foto %}
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ proveedor.foto.url }}" class="img-circle img-responsive"> </div>
+            {% if proveedor.foto %}
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ proveedor.foto.url }}" class="img-responsive"> </div>
             {% else %}
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{% static "gestion_proveedores/images/proveedor.png" %}" class="img-circle img-responsive"> </div>
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{% static "gestion_proveedores/images/proveedor.png" %}" class=" img-responsive"> </div>
             {% endif %}
             <div class=" col-md-9 col-lg-9 ">
               <table class="table table-user-information">
