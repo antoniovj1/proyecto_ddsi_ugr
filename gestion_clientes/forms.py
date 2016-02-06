@@ -1,7 +1,7 @@
 from django.forms import ModelForm,forms
 from datetimewidget.widgets import DateWidget
 import re
-from gestion_clientes.models import Cliente
+from gestion_clientes.models import Cliente,Revision
 
 
 class AltaClienteForm(ModelForm):
@@ -51,3 +51,16 @@ class ModificarClienteForm(ModelForm):
 
         if not re.match('^([+]\d{2})?\d{9}$', cd.get('telefono')):
             raise forms.ValidationError('Formato teléfono: [+XX]123456789')
+
+class RevisionForm(ModelForm):
+    class Meta:
+        model = Revision
+        fields = ['fecha','oculista','descripcion','diagnostico','plan']
+
+        dateOptions = {
+            'startView' : 4, # Para que empieze por el año
+        }
+
+        widgets = {
+            'fecha': DateWidget(options = dateOptions, bootstrap_version=3),
+        }

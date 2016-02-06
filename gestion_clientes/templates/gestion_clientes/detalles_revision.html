@@ -1,9 +1,9 @@
 {% extends "gestion_clientes/base.html" %}
 {% load bootstrap3 %}
-{% block title %} Detalles Cliente {% endblock %}
+{% block title %} Detalles Revisión {% endblock %}
 {% load staticfiles %}
 {% block content %}
-<h1>Detalles Cliente</h1>
+<h1>Detalles Revisión</h1>
 
 <div class="container">
   <div class="row">
@@ -18,22 +18,10 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            {% if cliente.foto %}
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ cliente.foto.url }}" class="img-circle img-responsive"> </div>
-            {% else %}
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{% static "gestion_clientes/images/cliente.png" %}" class="img-circle img-responsive"> </div>
-            {% endif %}
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{% static "gestion_clientes/images/informe.png" %}" class=" img-responsive"> </div>
             <div class=" col-md-9 col-lg-9 ">
               <table class="table table-user-information">
                 <tbody>
-                  <tr>
-                    <td>Nombre:</td>
-                    <td>{{ cliente.nombre}}</td>
-                  </tr>
-                  <tr>
-                    <td>Apellidos:</td>
-                    <td>{{cliente.apellidos }}</td>
-                  </tr>
                   <tr>
                     <td>Fecha de naciemiento:</td>
                     <td>{{ cliente.f_nacimiento }} </td>
@@ -43,24 +31,24 @@
                     <td>{{ cliente.sexo }} </td>
                   </tr>
                   <tr>
-                    <td>Telefono:</td>
-                    <td>{{ cliente.telefono }} </td>
+                    <td>Oculista:</td>
+                    <td>{{ revision.oculista }} </td>
                   </tr>
                   <tr>
-                    <td>DNI:</td>
-                    <td>{{ cliente.dni }} </td>
+                    <td>Fecha revisión:</td>
+                    <td>{{ revision.fecha }} </td>
                   </tr>
                   <tr>
-                    <td>Dirección:</td>
-                    <td>{{ cliente.direccion}} </td>
+                    <td>Descripción:</td>
+                    <td>{{ revision.descripcion}} </td>
                   </tr>
                   <tr>
-                    <td>Localidad:</td>
-                    <td>{{ cliente.localidad }} </td>
+                    <td>Diagnóstico:</td>
+                    <td>{{ revision.diagnostico }} </td>
                   </tr>
                   <tr>
-                    <td>Código postal:</td>
-                    <td>{{ cliente.cod_postal }} </td>
+                    <td>Plan:</td>
+                    <td>{{ revision.plan }} </td>
                   </tr>
                 </tbody>
               </table>
@@ -70,8 +58,8 @@
           </div>
         </div>
         <div class="panel-footer">
-          <a href="/clientes/info_opto/{{cliente.id}}" class="btn btn-primary">Informacón optométrica</a>
-          <a href="/clientes" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left">Atras</a>
+          <a href="#" class="btn btn-danger">PDF</a>
+          <a href="/clientes/info_opto/{{cliente.id}}" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left">Atras</a>
           </div>
 
         </div>

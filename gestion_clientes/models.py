@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Cliente(models.Model):
@@ -9,12 +10,12 @@ class Cliente(models.Model):
     OPCIONES = ((HOMBRE,'Hombre'),
                 (MUJER,'Mujer'),
                 (NONE,'Sin especificar'),)
-                
+
     nombre = models.CharField(max_length=30,blank=True)
     apellidos = models.CharField(max_length=30,blank=True)
     dni = models.CharField('DNI',max_length=9)#Mejorar
     f_nacimiento = models.DateField('Fecha de naciemiento',blank=True,null=True)
-    direccion = models.CharField(max_length=30,blank=True)
+    direccion = models.CharField('Dirección',max_length=30,blank=True)
     localidad = models.CharField(max_length=20,blank=True)
     cod_postal = models.CharField('Código postal',blank=True,null=True,max_length=5)
     telefono = models.CharField(blank=True,null=True,max_length=12)
@@ -31,3 +32,12 @@ class Cliente(models.Model):
             storage.delete(path)
         else:
             super(Cliente, self).delete(*args, **kwargs)
+
+class Revision(models.Model):
+    cliente_rev = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+
+    fecha = models.DateField(default=timezone.now,blank=True)
+    descripcion = models.TextField('Descripción',blank=True,null=True,max_length=150)
+    diagnostico = models.TextField('Diagnóstico',blank=True,null=True,max_length=150)
+    plan = models.TextField(blank=True,null=True,max_length=150)
+    oculista = models.CharField(blank=True,null=True,max_length=50)
