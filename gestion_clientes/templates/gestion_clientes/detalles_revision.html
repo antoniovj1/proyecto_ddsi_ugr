@@ -3,68 +3,71 @@
 {% block title %} Detalles Revisión {% endblock %}
 {% load staticfiles %}
 {% block content %}
-<h1>Detalles Revisión</h1>
+    <h1>Detalles Revisión</h1>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-
-
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{ cliente.nombre}} {{cliente.apellidos }}</h3>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{% static "gestion_clientes/images/informe.png" %}" class=" img-responsive"> </div>
-            <div class=" col-md-9 col-lg-9 ">
-              <table class="table table-user-information">
-                <tbody>
-                  <tr>
-                    <td>Fecha de naciemiento:</td>
-                    <td>{{ cliente.f_nacimiento }} </td>
-                  </tr>
-                  <tr>
-                    <td>Sexo:</td>
-                    <td>{{ cliente.sexo }} </td>
-                  </tr>
-                  <tr>
-                    <td>Oculista:</td>
-                    <td>{{ revision.oculista }} </td>
-                  </tr>
-                  <tr>
-                    <td>Fecha revisión:</td>
-                    <td>{{ revision.fecha }} </td>
-                  </tr>
-                  <tr>
-                    <td>Descripción:</td>
-                    <td>{{ revision.descripcion}} </td>
-                  </tr>
-                  <tr>
-                    <td>Diagnóstico:</td>
-                    <td>{{ revision.diagnostico }} </td>
-                  </tr>
-                  <tr>
-                    <td>Plan:</td>
-                    <td>{{ revision.plan }} </td>
-                  </tr>
-                </tbody>
-              </table>
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
             </div>
-          </div>
-        </div>
-        <div class="panel-footer">
-          <a href="#" class="btn btn-danger">PDF</a>
-          <a href="/clientes/info_opto/{{cliente.id}}" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left">Atras</a>
-          </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ cliente.nombre }} {{ cliente.apellidos }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 " align="center"><img alt="User Pic"
+                                                                                src="{% static "gestion_clientes/images/informe.png" %}"
+                                                                                class=" img-responsive"></div>
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>Fecha de naciemiento:</td>
+                                        <td>{{ cliente.f_nacimiento }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sexo:</td>
+                                        <td>{{ cliente.sexo }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oculista:</td>
+                                        <td>{{ revision.oculista }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fecha revisión:</td>
+                                        <td>{{ revision.fecha }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Descripción:</td>
+                                        <td>{{ revision.descripcion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diagnóstico:</td>
+                                        <td>{{ revision.diagnostico }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Plan:</td>
+                                        <td>{{ revision.plan }} </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <a href="#" class="btn btn-danger">PDF</a>
+                        <a href="/clientes/info_opto/{{ cliente.id }}" class="btn btn-warning"><span
+                                class="glyphicon glyphicon-chevron-left">Atras</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  {% endblock %}
+{% endblock %}

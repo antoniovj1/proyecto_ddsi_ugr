@@ -4,69 +4,74 @@
 {% load staticfiles %}
 
 {% block content %}
-<h1>Detalles Producto</h1>
+    <h1>Detalles Producto</h1>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{ producto.nombre}}</h3>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            {% if producto.foto %}
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ producto.foto.url }}" class="img-responsive"> </div>
-            {% else %}
-            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{% static "gestion_stock/images/producto.png" %}" class="img-responsive"> </div>
-            {% endif %}
-            <div class=" col-md-9 col-lg-9 ">
-              <table class="table table-user-information">
-                <tbody>
-                  <tr>
-                    <td>Nombre:</td>
-                    <td>{{ producto.nombre}}</td>
-                  </tr>
-                  <tr>
-                    <td>Código:</td>
-                    <td>{{producto.codigo}}</td>
-                  </tr>
-                  <tr>
-                    <td>Marca:</td>
-                    <td>{{ producto.marca }} </td>
-                  </tr>
-                  <tr>
-                    <td>Modelo:</td>
-                    <td>{{ producto.modelo }} </td>
-                  </tr>
-                  <tr>
-                    <td>Precio:</td>
-                    <td>{{ producto.precio }} </td>
-                  </tr>
-                  <tr>
-                    <td>Cantidad:</td>
-                    <td>{{ producto.cantidad }} </td>
-                  </tr>
-                  <tr>
-                    <td>Descripción:</td>
-                    <td>{{ producto.descripcion }} </td>
-                  </tr>
-                </tbody>
-              </table>
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
             </div>
-          </div>
-        </div>
-        <div class="panel-footer">
-          <a href="/stock" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left">Atras</a>
-          </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ producto.nombre }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            {% if producto.foto %}
+                                <div class="col-md-3 col-lg-3 " align="center"><img alt="User Pic"
+                                                                                    src="{{ producto.foto.url }}"
+                                                                                    class="img-responsive"></div>
+                            {% else %}
+                                <div class="col-md-3 col-lg-3 " align="center"><img alt="User Pic"
+                                                                                    src="{% static "gestion_stock/images/producto.png" %}"
+                                                                                    class="img-responsive"></div>
+                            {% endif %}
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>Nombre:</td>
+                                        <td>{{ producto.nombre }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Código:</td>
+                                        <td>{{ producto.codigo }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Marca:</td>
+                                        <td>{{ producto.marca }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Modelo:</td>
+                                        <td>{{ producto.modelo }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Precio:</td>
+                                        <td>{{ producto.precio }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cantidad:</td>
+                                        <td>{{ producto.cantidad }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Descripción:</td>
+                                        <td>{{ producto.descripcion }} </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <a href="/stock" class="btn btn-warning"><span
+                                class="glyphicon glyphicon-chevron-left">Atras</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  {% endblock %}
+{% endblock %}

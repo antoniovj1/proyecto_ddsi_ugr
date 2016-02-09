@@ -4,17 +4,18 @@
 {% block title %} Nueva Revisión  {% endblock %}
 
 {% block content %}
-<h1>Nueva Revisión</h1>
-{# Display a form #}
-<form method="post" class="form" enctype="multipart/form-data">
-  {% csrf_token%}
-  {% bootstrap_form form %}
-  {% buttons %}
-  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"> Guardar </button>
-</form>
-<form action="/clientes/info_opto/{{cliente}}">
-    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"> Atras</button>
-</form>
-    {% endbuttons %}
+    <h1>Nueva Revisión</h1>
+    {# Display a form #}
+    <form method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"> Guardar</button>
+            </form>
+            <form action="/clientes/info_opto/{{ cliente }}">
+                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"> Atras
+                </button>
+            </form>
+        {% endbuttons %}
 
-    {% endblock %}
+{% endblock %}

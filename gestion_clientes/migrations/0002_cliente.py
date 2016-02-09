@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -26,7 +25,9 @@ class Migration(migrations.Migration):
                 ('localidad', models.CharField(blank=True, max_length=20)),
                 ('cod_postal', models.CharField(blank=True, max_length=5, null=True, verbose_name='Código postal')),
                 ('telefono', models.CharField(blank=True, max_length=12, null=True)),
-                ('sexo', models.CharField(choices=[('Hombre', 'Hombre'), ('Mujer', 'Mujer'), ('Sin especificar', 'Sin especificar')], default='Sin especificar', max_length=16)),
+                ('sexo', models.CharField(
+                    choices=[('Hombre', 'Hombre'), ('Mujer', 'Mujer'), ('Sin especificar', 'Sin especificar')],
+                    default='Sin especificar', max_length=16)),
                 ('foto', models.ImageField(blank=True, null=True, upload_to='clientes/')),
             ],
         ),

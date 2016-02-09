@@ -4,62 +4,62 @@
 {% block title %} Inicio {% endblock %}
 
 {% block bar_name %}
-  <a href="#" class="navbar-brand">Proyecto DDSI</a>
+    <a href="#" class="navbar-brand">Proyecto DDSI</a>
 {% endblock %}
 
 {% block extend_menu %}
-<li class="active"><a href="/clientes">Clientes</a></li>
-<li class="active"><a href="/proveedores">Proveedores</a></li>
-<li class="active"><a href="/personal">Personal</a></li>
-<li class="active"><a href="/stock">Stock</a></li>
+    <li class="active"><a href="/clientes">Clientes</a></li>
+    <li class="active"><a href="/proveedores">Proveedores</a></li>
+    <li class="active"><a href="/personal">Personal</a></li>
+    <li class="active"><a href="/stock">Stock</a></li>
 {% endblock %}
 
 
 {% block content %}
     <div class="row">
-      <a href="/clientes">
-        <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
-            <img src="{% static "inicio/images/cliente.png" %}" alt="clientes">
-          </div>
-          <div class="caption text-center">
-            <h3>Gestión clientes</h3>
-          </div>
-        </div>
-      </a>
+        <a href="/clientes">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="{% static "inicio/images/cliente.png" %}" alt="clientes">
+                </div>
+                <div class="caption text-center">
+                    <h3>Gestión clientes</h3>
+                </div>
+            </div>
+        </a>
 
-      <a href="/proveedores">
-        <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
-            <img src="{% static "inicio/images/proveedor.png" %}" alt="proveedores">
-          </div>
-          <div class="caption text-center">
-            <h3>Gestión proveedores</h3>
-          </div>
-        </div>
-      </a>
+        <a href="/proveedores">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="{% static "inicio/images/proveedor.png" %}" alt="proveedores">
+                </div>
+                <div class="caption text-center">
+                    <h3>Gestión proveedores</h3>
+                </div>
+            </div>
+        </a>
 
-      <a href="/personal">
-        <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
-            <img src="{% static "inicio/images/personal.png" %}" alt="personal">
-          </div>
-          <div class="caption text-center">
-            <h3>Gestión personal</h3>
-          </div>
-        </div>
-      </a>
+        <a href="/personal">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="{% static "inicio/images/personal.png" %}" alt="personal">
+                </div>
+                <div class="caption text-center">
+                    <h3>Gestión personal</h3>
+                </div>
+            </div>
+        </a>
 
-      <a href="/stock">
-        <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
-            <img src="{% static "inicio/images/stock.png" %}" alt="personal">
-          </div>
-          <div class="caption text-center">
-            <h3>Gestión stock</h3>
-          </div>
-        </div>
-      </a>
+        <a href="/stock">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="{% static "inicio/images/stock.png" %}" alt="personal">
+                </div>
+                <div class="caption text-center">
+                    <h3>Gestión stock</h3>
+                </div>
+            </div>
+        </a>
 
     </div>
 {% endblock %}

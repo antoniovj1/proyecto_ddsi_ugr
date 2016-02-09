@@ -3,15 +3,15 @@
 {% block title %} Modificar Producto{% endblock %}
 
 {% block content %}
-<h1> Modificar Producto</h1> {# Display a form #}
-<form method="post" class="form" enctype="multipart/form-data">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-  <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
-<form action="/stock">
-  <button type="submit" class="btn btn-danger">Atras</button>
-</form>
-{% endbuttons %}
+    <h1> Modificar Producto</h1> {# Display a form #}
+    <form method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+            <form action="/stock">
+                <button type="submit" class="btn btn-danger">Atras</button>
+            </form>
+        {% endbuttons %}
 {% endblock %}

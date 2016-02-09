@@ -1,88 +1,92 @@
-{% extends "gestion_personal/base.html" %} {% load bootstrap3 %} {% block title %} Personal {% endblock %} {% block content %}
+{% extends "gestion_personal/base.html" %} {% load bootstrap3 %} {% block title %} Personal {% endblock %}
+{% block content %}
 
-<form action="/personal/alta">
-  <button type="submit" class="btn btn-success "><span class="glyphicon glyphicon-plus"> Nuevo</button>
-  </form>
-  <p></p>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <form action="/personal/buscar" class="search-form">
-          <div class="form-group has-feedback">
-            <label for="search" class="sr-only">Buscar...</label>
-            <input type="text" class="form-control" name="search" id="search" placeholder="search">
-            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  {% if personal %}
-  <table class="table table-striped table-bordered table-condensed table-responsive">
-    <thead>
-      <tr>
-        <th></th>
-        <th colspan="1">Nombre</th>
-        <th colspan="1">Apellido</th>
-        <th colspan="1">Telefono</th>
-        <th colspan="1">DNI</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-
-    <tbody
-    {% for empleado in personal %}
-    <tr>
-      <td> {{ empleado.id}} </td>
-      <td> {{ empleado.nombre}} </td>
-      <td> {{ empleado.apellidos}} </td>
-      <td> {{ empleado.telefono}} </td>
-      <td> {{ empleado.dni}} </td>
-
-      <td>
-        <div class="btn-group">
-          <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"> Opciones <span class="caret glyphicon glyphicon-wrench"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="/personal/detalles/{{empleado.id}}">Detalles</a></li>
-            <li><a href="/personal/modificar/{{empleado.id}}">Modificar</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#modalDelete{{empleado.id}}">Eliminar</a></li>
-          </ul>
-        </div>
-      </td>
-
-      <!-- Modal -->
-      <div id="modalDelete{{empleado.id}}" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h3 class="modal-title">Eliminar</h3>
-            </div>
-            <div class="modal-body">
-              <h3>¿ Está seguro de que desea eliminar al empleado ?</h3>
-            </div>
-            <div class="modal-footer">
-              <form action="/personal/eliminar/{{empleado.id}}">
-                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"> Eliminar </button>
+    <form action="/personal/alta">
+        <button type="submit" class="btn btn-success "><span class="glyphicon glyphicon-plus"> Nuevo</button>
+    </form>
+    <p></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form action="/personal/buscar" class="search-form">
+                    <div class="form-group has-feedback">
+                        <label for="search" class="sr-only">Buscar...</label>
+                        <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
                 </form>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-              </div>
             </div>
-          </div>
         </div>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+    </div>
+    {% if personal %}
+        <table class="table table-striped table-bordered table-condensed table-responsive">
+            <thead>
+            <tr>
+                <th></th>
+                <th colspan="1">Nombre</th>
+                <th colspan="1">Apellido</th>
+                <th colspan="1">Telefono</th>
+                <th colspan="1">DNI</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
 
-  <br/>
-</div>
+            <tbody
+            {% for empleado in personal %}
+                <tr>
+                    <td> {{ empleado.id }} </td>
+                    <td> {{ empleado.nombre }} </td>
+                    <td> {{ empleado.apellidos }} </td>
+                    <td> {{ empleado.telefono }} </td>
+                    <td> {{ empleado.dni }} </td>
+
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+                                Opciones <span class="caret glyphicon glyphicon-wrench"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/personal/detalles/{{ empleado.id }}">Detalles</a></li>
+                                <li><a href="/personal/modificar/{{ empleado.id }}">Modificar</a></li>
+                                <li><a href="#" data-toggle="modal"
+                                       data-target="#modalDelete{{ empleado.id }}">Eliminar</a></li>
+                            </ul>
+                        </div>
+                    </td>
+
+                    <!-- Modal -->
+                    <div id="modalDelete{{ empleado.id }}" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h3 class="modal-title">Eliminar</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>¿ Está seguro de que desea eliminar al empleado ?</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="/personal/eliminar/{{ empleado.id }}">
+                                        <button type="submit" class="btn btn-danger"><span
+                                                class="glyphicon glyphicon-remove"> Eliminar</button>
+                                    </form>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <br/>
+        </div>
 
 
-{% else %}
-<h2> No se encuentra personal </h2>
-{% endif %}
+    {% else %}
+        <h2> No se encuentra personal </h2>
+    {% endif %}
 
 {% endblock %}
