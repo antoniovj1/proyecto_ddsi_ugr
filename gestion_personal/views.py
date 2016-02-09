@@ -10,6 +10,11 @@ from gestion_personal.models import *
 # Create your views here.
 @login_required
 def index(request):
+    """
+    Índice gestión de personal.
+    :param request:
+    :return:
+    """
     personal = Personal.objects.all()
     context = {'personal': personal}
     return render(request, 'gestion_personal/index.html', context)
@@ -17,6 +22,11 @@ def index(request):
 
 @login_required
 def buscar(request):
+    """
+    Muestra los empleados que coincidan con query.
+    :param request:
+    :return:
+    """
     query = request.GET.get('search')
 
     if len(query) == 0:
@@ -38,6 +48,11 @@ def buscar(request):
 
 @login_required
 def alta_personal(request):
+    """
+    Añade un empleado.
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         user_form = UserForm(request.POST, request.FILES)
         personal_form = AltaPersonalForm(request.POST)
@@ -63,6 +78,12 @@ def alta_personal(request):
 
 @login_required
 def detalles_personal(request, id):
+    """
+    Muestra los detalles de un empleado.
+    :param request:
+    :param id:
+    :return:
+    """
     personal = Personal.objects.get(pk=id)
     context = {'personal': personal}
     return render(request, 'gestion_personal/detalles_personal.html', context)
@@ -70,12 +91,24 @@ def detalles_personal(request, id):
 
 @login_required
 def eliminar_personal(request, id):
+    """
+    Elimina un empleado.
+    :param request:
+    :param id:
+    :return:
+    """
     Personal.objects.get(pk=id).user.delete()
     return HttpResponseRedirect('/personal')
 
 
 @login_required
 def modificar_personal(request, id):
+    """
+    Modifica a un empleado.
+    :param request:
+    :param id:
+    :return:
+    """
     personal = Personal.objects.get(pk=id)
 
     if request.method == "POST":

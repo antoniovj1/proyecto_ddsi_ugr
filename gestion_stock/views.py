@@ -10,6 +10,11 @@ from gestion_stock.models import Producto
 # Create your views here.
 @login_required
 def index(request):
+    """
+    Índice gestión de stock
+    :param request:
+    :return:
+    """
     productos = Producto.objects.all()
     context = {'productos': productos}
 
@@ -18,6 +23,11 @@ def index(request):
 
 @login_required
 def stock_bajo(request):
+    """
+    Muestra los productos con una cantifad menor o igual a 5.
+    :param request:
+    :return:
+    """
     productos = Producto.objects.filter(cantidad__lte=5)
     context = {'productos': productos}
     return render(request, 'gestion_stock/index.html', context)
@@ -25,6 +35,12 @@ def stock_bajo(request):
 
 @login_required
 def detalles_producto(request, id):
+    """
+    Muestra los detalles de un producto.
+    :param request:
+    :param id:
+    :return:
+    """
     producto = Producto.objects.get(pk=id)
     context = {'producto': producto}
     return render(request, 'gestion_stock/detalles_producto.html', context)
@@ -32,6 +48,12 @@ def detalles_producto(request, id):
 
 @login_required
 def modificar_producto(request, id):
+    """
+    Modifica un producto.
+    :param request:
+    :param id:
+    :return:
+    """
     producto = Producto.objects.get(pk=id)
 
     if request.method == "POST":
@@ -65,6 +87,11 @@ def modificar_producto(request, id):
 
 @login_required
 def buscar(request):
+    """
+    Busca los productos que coinciden con query.
+    :param request:
+    :return:
+    """
     query = request.GET.get('search')
 
     if len(query) == 0:
@@ -85,6 +112,11 @@ def buscar(request):
 
 @login_required
 def nuevo_producto(request):
+    """
+    Añade un producto.
+    :param request:
+    :return:
+    """
     if request.method == "POST":
         form = NuevoProductoForm(request.POST, request.FILES)
 
@@ -99,12 +131,27 @@ def nuevo_producto(request):
 
 @login_required
 def eliminar_producto(request, id):
+    """
+    Elimina un producto.
+    :param request:
+    :param id:
+    :return:
+    """
     Producto.objects.get(pk=id).delete()
     return HttpResponseRedirect('/stock')
 
 
 @login_required
 def reponer_gastar_producto(request):
+    """
+    Esta función permite reponer un producto( número positivo ) o gastar
+    una cantidad de un producto (número negativo). Además, cuando se gasta
+    un producto PUEDE crear dos tipos de mensajes, uno advirtiendo que el
+    producto pasa a estar en stock bajo (cantidad <=5) o que no se dispone
+    de las suficientes unidades.
+    :param request:
+    :return:
+    """
     productos = Producto.objects.all()
     cantidad = request.GET.get('cantidad')
     id = request.GET.get('id')
@@ -126,7 +173,7 @@ def reponer_gastar_producto(request):
         else:
             producto.cantidad += cantidad  # Restamos la cantidad ( es negativo )
             producto.save()
-            if Producto.objects.get(pk=id).cantidad < 5:
+            if Producto.objects.get(pk=id).cantidad <= 5:
                 mensaje_stock = ("Stock bajo en el producto:" +
                                  "Código: " + str(Producto.objects.get(pk=id).codigo) +
                                  " Nombre: " + str(Producto.objects.get(pk=id).nombre))

@@ -11,6 +11,11 @@ from gestion_clientes.models import *
 # Create your views here.
 @login_required
 def index(request):
+    """
+    Índice de gestión clientes.
+    :param request:
+    :return:
+    """
     clientes = Cliente.objects.all()
     context = {'clientes': clientes}
     return render(request, 'gestion_clientes/index.html', context)
@@ -18,6 +23,11 @@ def index(request):
 
 @login_required
 def buscar(request):
+    """
+    Busca los clientes que coincidan con query.
+    :param request:
+    :return:
+    """
     query = request.GET.get('search')
 
     if len(query) == 0:
@@ -38,6 +48,11 @@ def buscar(request):
 
 @login_required
 def alta_cliente(request):
+    """
+    Añade un nuevo cliente.
+    :param request:
+    :return:
+    """
     if request.method == "POST":
         form = AltaClienteForm(request.POST, request.FILES)
         if form.is_valid():
@@ -51,6 +66,12 @@ def alta_cliente(request):
 
 @login_required
 def detalles_cliente(request, id):
+    """
+    Muestra un cliente en detalle.
+    :param request:
+    :param id:
+    :return:
+    """
     cliente = Cliente.objects.get(pk=id)
     context = {'cliente': cliente}
     return render(request, 'gestion_clientes/detalles_cliente.html', context)
@@ -58,12 +79,24 @@ def detalles_cliente(request, id):
 
 @login_required
 def eliminar_cliente(request, id):
+    """
+    Elimina un cliente.
+    :param request:
+    :param id:
+    :return:
+    """
     Cliente.objects.get(pk=id).delete()
     return HttpResponseRedirect('/clientes')
 
 
 @login_required
 def modificar_cliente(request, id):
+    """
+    Modifica a un cliente.
+    :param request:
+    :param id:
+    :return:
+    """
     cliente = Cliente.objects.get(pk=id)
 
     if request.method == "POST":
@@ -100,6 +133,12 @@ def modificar_cliente(request, id):
 
 @login_required
 def nueva_revision(request, id):
+    """
+    Añade una revisión para un cliente.
+    :param request:
+    :param id: ID del cliente.
+    :return:
+    """
     if request.method == "POST":
         form = RevisionForm(request.POST)
 
@@ -133,6 +172,12 @@ def nueva_revision(request, id):
 
 @login_required
 def ver_resvisiones(request, id):
+    """
+    Muestra las revisiones de un cliente.
+    :param request:
+    :param id: ID del cliente
+    :return:
+    """
     revisiones = Revision.objects.filter(cliente_rev=id).order_by('fecha')
     context = {'revisiones': revisiones, 'id': id}
     return render(request, 'gestion_clientes/revisiones.html', context)
@@ -140,6 +185,12 @@ def ver_resvisiones(request, id):
 
 @login_required
 def modificar_revision(request, id_rev):
+    """
+    Modifica un revisión.
+    :param request:
+    :param id_rev:
+    :return:
+    """
     revision = Revision.objects.get(pk=id_rev)
     cliente = revision.cliente_rev
     cliente = cliente.id
@@ -170,6 +221,12 @@ def modificar_revision(request, id_rev):
 
 @login_required
 def detalles_revision(request, id_rev):
+    """
+    Muestra los detalles de una revisón.
+    :param request:
+    :param id_rev:
+    :return:
+    """
     revision = Revision.objects.get(pk=id_rev)
     cliente = revision.cliente_rev
 
@@ -180,6 +237,12 @@ def detalles_revision(request, id_rev):
 
 @login_required
 def eliminar_revision(request, id_rev):
+    """
+    Elimina una revisión.
+    :param request:
+    :param id_rev:
+    :return:
+    """
     rev = Revision.objects.get(pk=id_rev)
 
     cliente = rev.cliente_rev

@@ -7,11 +7,22 @@ from django.shortcuts import render
 
 @login_required
 def index_view(request):
+    """
+    Muestra la página principal.
+    :param request:
+    :return:
+    """
     return render(request, 'inicio/index.html')
 
 
 def login_view(request):
+    """
+    Login
+    :param request:
+    :return:
+    """
     # Si el usuario esta ya logueado, lo redireccionamos a index_view
+
     if request.user.is_authenticated():
         return HttpResponseRedirect('/inicio')
 
@@ -34,6 +45,11 @@ def login_view(request):
 
 @login_required
 def log_out(request):
+    """
+    Logout
+    :param request:
+    :return:
+    """
     logout(request)
 
     return HttpResponseRedirect('/login')

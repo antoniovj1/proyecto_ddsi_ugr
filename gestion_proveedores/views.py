@@ -10,6 +10,11 @@ from gestion_proveedores.models import *
 # Create your views here.
 @login_required
 def index(request):
+    """
+    Índice gestión de proveedores.
+    :param request:
+    :return:
+    """
     proveedores = Proveedor.objects.all()
     context = {'proveedores': proveedores}
     return render(request, 'gestion_proveedores/index.html', context)
@@ -17,6 +22,11 @@ def index(request):
 
 @login_required
 def buscar(request):
+    """
+    Busca los proveedores que coincidan con query
+    :param request:
+    :return:
+    """
     query = request.GET.get('search')
 
     if len(query) == 0:
@@ -38,6 +48,11 @@ def buscar(request):
 
 @login_required
 def alta_proveedor(request):
+    """
+    Añade un proveedor.
+    :param request:
+    :return:
+    """
     if request.method == "POST":
         form = AltaProveedorForm(request.POST, request.FILES)
 
@@ -51,6 +66,12 @@ def alta_proveedor(request):
 
 @login_required
 def detalles_proveedor(request, id):
+    """
+    Muestra los detalles de un proveedor.
+    :param request:
+    :param id:
+    :return:
+    """
     proveedor = Proveedor.objects.get(pk=id)
     context = {'proveedor': proveedor}
     return render(request, 'gestion_proveedores/detalles_proveedor.html', context)
@@ -58,12 +79,24 @@ def detalles_proveedor(request, id):
 
 @login_required
 def eliminar_proveedor(request, id):
+    """
+    Elimina un proveedor.
+    :param request:
+    :param id:
+    :return:
+    """
     Proveedor.objects.get(pk=id).delete()
     return HttpResponseRedirect('/proveedores')
 
 
 @login_required
 def modificar_proveedor(request, id):
+    """
+    Modifica un proveedor.
+    :param request:
+    :param id:
+    :return:
+    """
     proveedor = Proveedor.objects.get(pk=id)
 
     if request.method == "POST":
