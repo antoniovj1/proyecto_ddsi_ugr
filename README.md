@@ -22,4 +22,4 @@ pip install -r /path/to/requirements.txt
 - [Django Datetime Widget](https://github.com/asaglimbeni/django-datetime-widget)
 - [Pillow](http://python-pillow.github.io/)
 
->Debido a que ha habido poco tiempo para la implementación, es probable que existan errores en el código. Además no todas la funcionalidades han sido implementadas.
+>Debido a que ha habido poco tiempo para la implementación y que no sabía nada de programación web (HTML, CSS, django...), es probable que existan errores en el código. Además no todas la funcionalidades han sido implementadas.
