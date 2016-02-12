@@ -4,7 +4,8 @@ El proyecto consiste en diseñar un sistema ( en este caso para administrar una 
 > ##### Login:
  - Usuario: antonio
  - Contraseña: antonio12345
-
+ - *Cada vez que se crea un empleado ( en Gestión de personal ), este se puede usar para el login.*
+ 
 #### Requisitos:
 - Python==3.5.1
 - Django==1.9.1
