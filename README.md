@@ -1,6 +1,10 @@
 # Proyecto DDSI
 El proyecto consiste en diseñar un sistema ( en este caso para administrar una óptica) e implementar parte de ese diseño.
 
+> ##### Login:
+ - Usuario: antonio
+ - Contraseña: antonio12345
+
 #### Requisitos:
 - Python==3.5.1
 - Django==1.9.1
@@ -15,6 +19,12 @@ El proyecto consiste en diseñar un sistema ( en este caso para administrar una 
 ```
 pip install -r /path/to/requirements.txt
 ```
+
+#### Ejecución ( con Python 3.X):
+```
+python manage.py runserver
+```
+
 ### Enalces a las herrmientas:
 - [Python](https://www.python.org/)
 - [Django](https://www.djangoproject.com)
