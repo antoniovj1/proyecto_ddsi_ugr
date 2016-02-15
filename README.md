@@ -34,3 +34,7 @@ python manage.py runserver
 - [Pillow](http://python-pillow.github.io/)
 
 >Debido a que ha habido poco tiempo para la implementación y que no sabía nada de programación web (HTML, CSS, django...), es probable que existan errores en el código. Además no todas la funcionalidades han sido implementadas.
+
+___
+###### Universidad de Granada (UGR)
+___
